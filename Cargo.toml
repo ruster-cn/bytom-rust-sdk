@@ -7,7 +7,7 @@ license = "Apache-2.0"
 repository = "https://github.com/ruster-cn/bytom-rust-sdk"
 homepage = ""
 documentation = ""
-description = ""
+description = "Bytom Rust SDK"
 categories = [""]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
