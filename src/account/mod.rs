@@ -1,6 +1,5 @@
-pub mod response;
 pub mod request;
-
+pub mod response;
 
 use serde::export::fmt::Error;
 use serde::export::Formatter;
@@ -38,7 +37,6 @@ impl fmt::Display for AnnotatedAccount {
         }
     }
 }
-
 
 #[derive(Debug, Default, Deserialize, Serialize)]
 pub struct Address {
@@ -83,19 +81,19 @@ impl fmt::Display for AddressVec {
 }
 
 #[derive(Debug, Default, Deserialize, Serialize)]
-pub struct Image{
-    pub slices: Vec<ImageSlice>
+pub struct Image {
+    pub slices: Vec<ImageSlice>,
 }
 
 #[derive(Debug, Default, Deserialize, Serialize)]
-pub struct ImageSlice{
+pub struct ImageSlice {
     pub account: Account,
     pub contract_index: u64,
 }
 
 #[derive(Debug, Default, Deserialize, Serialize)]
-pub struct Account{
-    #[serde(rename(serialize="type",deserialize="type"))]
+pub struct Account {
+    #[serde(rename(serialize = "type", deserialize = "type"))]
     pub account_type: String,
     pub xpubs: Vec<String>,
     pub quorum: u8,

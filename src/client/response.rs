@@ -16,16 +16,12 @@ where
     pub code: String,
     #[serde(default, skip_serializing_if = "String::is_empty")]
     pub msg: String,
-    #[serde(
-        default,
-        skip_serializing_if = "String::is_empty"
-    )]
+    #[serde(default, skip_serializing_if = "String::is_empty")]
     pub detail: String,
     #[serde(default)]
     pub temporary: bool,
     #[serde(default)]
     pub data: T,
-
 }
 
 impl<T> fmt::Display for Response<T>

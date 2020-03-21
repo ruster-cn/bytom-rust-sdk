@@ -4,7 +4,7 @@ use serde::Deserialize;
 use serde::Serialize;
 use std::fmt;
 
-#[derive(Default,Clone, Debug, Deserialize, Serialize)]
+#[derive(Default, Clone, Debug, Deserialize, Serialize)]
 pub struct Key {
     //alias name of the key
     #[serde(default, skip_serializing_if = "String::is_empty")]
@@ -36,16 +36,16 @@ impl fmt::Display for Key {
     }
 }
 
-#[derive(Default,Clone, Debug, Deserialize, Serialize)]
-pub struct CheckPasswordResp{
+#[derive(Default, Clone, Debug, Deserialize, Serialize)]
+pub struct CheckPasswordResp {
     #[serde(default)]
-    pub check_result: bool
+    pub check_result: bool,
 }
 
-#[derive(Default,Clone, Debug, Deserialize, Serialize)]
-pub struct ResetPasswordResp{
+#[derive(Default, Clone, Debug, Deserialize, Serialize)]
+pub struct ResetPasswordResp {
     #[serde(default)]
-    pub changed: bool
+    pub changed: bool,
 }
 
 #[cfg(test)]
@@ -66,8 +66,8 @@ mod tests {
     }
 }
 
-#[derive(Default,Clone, Debug, Deserialize, Serialize)]
-pub struct Token{
+#[derive(Default, Clone, Debug, Deserialize, Serialize)]
+pub struct Token {
     pub id: String,
     pub token: String,
     pub token_type: String,

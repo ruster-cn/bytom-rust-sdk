@@ -1,8 +1,8 @@
 use serde::Deserialize;
 use serde::Serialize;
 
-#[derive(Default,Clone, Debug, Deserialize, Serialize)]
-pub struct NetInfo{
+#[derive(Default, Clone, Debug, Deserialize, Serialize)]
+pub struct NetInfo {
     pub listening: bool,
     pub syncing: bool,
     pub mining: bool,
@@ -13,20 +13,20 @@ pub struct NetInfo{
     pub version_info: VersionInfo,
 }
 
-#[derive(Default,Clone, Debug, Deserialize, Serialize)]
-pub struct VersionInfo{
+#[derive(Default, Clone, Debug, Deserialize, Serialize)]
+pub struct VersionInfo {
     pub version: String,
-    pub update:u16,
-    pub new_version:String,
+    pub update: u16,
+    pub new_version: String,
 }
 
-#[derive(Default,Clone, Debug, Deserialize, Serialize)]
-pub struct PeerInfo{
+#[derive(Default, Clone, Debug, Deserialize, Serialize)]
+pub struct PeerInfo {
     pub peer_id: String,
     pub remote_addr: String,
     pub height: u64,
     pub ping: String,
-    pub duration:String,
+    pub duration: String,
     pub total_sent: u64,
     pub total_received: u64,
     pub average_sent_rate: u64,

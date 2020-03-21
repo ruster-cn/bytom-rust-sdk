@@ -1,11 +1,13 @@
-use bytom_rust_sdk::client::BtmClient;
 use bytom_rust_sdk::account::request::CreateAccountRequestParam;
-use bytom_rust_sdk::transaction::request::{CreateAssetRequestParam, ListUnspentOutputsRequestParam};
+use bytom_rust_sdk::client::BtmClient;
+use bytom_rust_sdk::transaction::request::{
+    CreateAssetRequestParam, ListUnspentOutputsRequestParam,
+};
 use std::collections::HashMap;
 
 #[tokio::main]
 async fn main() {
-    create_key().await;
+    list_keys().await;
 }
 
 #[allow(dead_code)]
@@ -28,7 +30,7 @@ async fn list_keys() {
         .list_keys()
         .await
         .map(|response| println!("{:?}", response))
-        .map_err(|err| println!("{:?}", err.to_string()) )
+        .map_err(|err| println!("{:?}", err.to_string()))
         .ok();
 }
 
@@ -40,11 +42,10 @@ async fn update_key_alias() {
         .await.map(|response| println!("{:?}", response))
         .map_err(|err| println!("{:?}", err.to_string()) )
         .ok();
-
 }
 
 #[allow(dead_code)]
-async fn delete_key(){
+async fn delete_key() {
     let client = BtmClient::new("47.103.115.37:9888".to_string(), "http".to_string());
     client
         .delete_key("940f37b6f8b26d4bbd59e6c3907b0e2f55a574db07bc210210a3b6df5dce54935b72a2dd899e0aab6da61ac953a24ad74e812f32816305339bf2ed86ccb9207f","delete-key")
@@ -55,7 +56,7 @@ async fn delete_key(){
 }
 
 #[allow(dead_code)]
-async fn check_key_password(){
+async fn check_key_password() {
     let client = BtmClient::new("47.103.115.37:9888".to_string(), "http".to_string());
     client
         .check_key_password("9d25b9c4e767d1fe1c78dc306339b4f2133681d5e1fe6f6555e3398837eb86dbf4b632c711c9d322ada44de4619518fe5c1a62f641fa2f695204f7e558c7d531","delete-key")
@@ -65,9 +66,8 @@ async fn check_key_password(){
         .ok();
 }
 
-
 #[allow(dead_code)]
-async fn reset_key_password(){
+async fn reset_key_password() {
     let client = BtmClient::new("47.103.115.37:9888".to_string(), "http".to_string());
     client
         .reset_key_password("9d25b9c4e767d1fe1c78dc306339b4f2133681d5e1fe6f6555e3398837eb86dbf4b632c711c9d322ada44de4619518fe5c1a62f641fa2f695204f7e558c7d531","delete-key","reset-key")
@@ -76,7 +76,6 @@ async fn reset_key_password(){
         .map_err(|err|println!("{:?}",err.to_string()))
         .ok();
 }
-
 
 #[allow(dead_code)]
 async fn create_account() {
@@ -89,33 +88,32 @@ async fn create_account() {
     client
         .create_account(&request_param)
         .await
-        .map(|response| println!("{:?}",response))
-        .map_err(|err|println!("{:?}",err.to_string()))
+        .map(|response| println!("{:?}", response))
+        .map_err(|err| println!("{:?}", err.to_string()))
         .ok();
 }
 
 #[allow(dead_code)]
-async fn list_account(){
+async fn list_account() {
     let client = BtmClient::new("47.103.115.37:9888".to_string(), "http".to_string());
     client
-        .list_account("","test")
+        .list_account("", "test")
         .await
-        .map(|response| println!("{:?}",response))
-        .map_err(|err|println!("{:?}",err.to_string()))
+        .map(|response| println!("{:?}", response))
+        .map_err(|err| println!("{:?}", err.to_string()))
         .ok();
 }
 
 #[allow(dead_code)]
-async fn update_account_alias(){
+async fn update_account_alias() {
     let client = BtmClient::new("47.103.115.37:9888".to_string(), "http".to_string());
     client
-        .update_account_alias("dad","bob","18CTVQUV00A04")
+        .update_account_alias("dad", "bob", "18CTVQUV00A04")
         .await
-        .map(|response| println!("{:?}",response))
-        .map_err(|err|println!("{:?}",err.to_string()))
+        .map(|response| println!("{:?}", response))
+        .map_err(|err| println!("{:?}", err.to_string()))
         .ok();
 }
-
 
 #[allow(dead_code)]
 async fn delete_account() {
@@ -123,8 +121,8 @@ async fn delete_account() {
     client
         .delete_account("dad", "")
         .await
-        .map(|response| println!("{:?}",response))
-        .map_err(|err|println!("{:?}",err.to_string()))
+        .map(|response| println!("{:?}", response))
+        .map_err(|err| println!("{:?}", err.to_string()))
         .ok();
 }
 
@@ -134,8 +132,8 @@ async fn create_account_receiver() {
     client
         .create_account_receiver("test", "")
         .await
-        .map(|response| println!("{:?}",response))
-        .map_err(|err|println!("{:?}",err.to_string()))
+        .map(|response| println!("{:?}", response))
+        .map_err(|err| println!("{:?}", err.to_string()))
         .ok();
 }
 
@@ -145,8 +143,8 @@ async fn list_address() {
     client
         .list_address("test", "18CTR8QRG0A02", 0, 3)
         .await
-        .map(|response| println!("{:?}",response))
-        .map_err(|err|println!("{:?}",err.to_string()))
+        .map(|response| println!("{:?}", response))
+        .map_err(|err| println!("{:?}", err.to_string()))
         .ok();
 }
 
@@ -156,68 +154,68 @@ async fn validate_address() {
     client
         .validate_address("sm1q8vp4nrzp3e6pryu6kyn34gu3y3qxgpuyaqqnlq")
         .await
-        .map(|response| println!("{:?}",response))
-        .map_err(|err|println!("{:?}",err.to_string()))
+        .map(|response| println!("{:?}", response))
+        .map_err(|err| println!("{:?}", err.to_string()))
         .ok();
 }
 
 #[allow(dead_code)]
-async fn get_mining_address(){
+async fn get_mining_address() {
     let client = BtmClient::new("47.103.115.37:9888".to_string(), "http".to_string());
     client
         .get_mining_address()
         .await
-        .map(|response| println!("{:?}",response))
-        .map_err(|err|println!("{:?}",err.to_string()))
+        .map(|response| println!("{:?}", response))
+        .map_err(|err| println!("{:?}", err.to_string()))
         .ok();
 }
 
 #[allow(dead_code)]
-async fn set_mining_address(){
+async fn set_mining_address() {
     let client = BtmClient::new("47.103.115.37:9888".to_string(), "http".to_string());
     client
         .set_mining_address("sm1q5aqlsgu542rkqefxumhejlwl7awvgtxrk259gd")
         .await
-        .map(|response| println!("{:?}",response))
-        .map_err(|err|println!("{:?}",err.to_string()))
+        .map(|response| println!("{:?}", response))
+        .map_err(|err| println!("{:?}", err.to_string()))
         .ok();
 }
 
 #[allow(dead_code)]
-async fn get_coinbase_arbitrary(){
+async fn get_coinbase_arbitrary() {
     let client = BtmClient::new("47.103.115.37:9888".to_string(), "http".to_string());
     client
         .get_coinbase_arbitrary()
         .await
-        .map(|response| println!("{:?}",response))
-        .map_err(|err|println!("{:?}",err.to_string()))
+        .map(|response| println!("{:?}", response))
+        .map_err(|err| println!("{:?}", err.to_string()))
         .ok();
 }
 
 #[allow(dead_code)]
-async fn set_coinbase_arbitrary(){
+async fn set_coinbase_arbitrary() {
     let client = BtmClient::new("47.103.115.37:9888".to_string(), "http".to_string());
     client
         .set_coinbase_arbitrary("ff")
         .await
-        .map(|response| println!("{:?}",response))
-        .map_err(|err|println!("{:?}",err.to_string()))
+        .map(|response| println!("{:?}", response))
+        .map_err(|err| println!("{:?}", err.to_string()))
         .ok();
 }
 
 #[allow(dead_code)]
-async fn list_pubkeys(){
+async fn list_pubkeys() {
     let client = BtmClient::new("47.103.115.37:9888".to_string(), "http".to_string());
     client
-        .list_pubkeys("test","","")
+        .list_pubkeys("test", "", "")
         .await
-        .map(|response| println!("{:?}",response))
-        .map_err(|err|println!("{:?}",err.to_string()))
+        .map(|response| println!("{:?}", response))
+        .map_err(|err| println!("{:?}", err.to_string()))
         .ok();
 }
 
 #[allow(dead_code)]
-async fn create_asset(){
+async fn create_asset() {
     let client = BtmClient::new("47.103.115.37:9888".to_string(), "http".to_string());
     let param = CreateAssetRequestParam{
         alias: "yuo".to_string(),
@@ -230,108 +228,110 @@ async fn create_asset(){
     client
         .create_asset(&param)
         .await
-        .map(|response| println!("{:?}",response))
-        .map_err(|err|println!("{:?}",err.to_string()))
+        .map(|response| println!("{:?}", response))
+        .map_err(|err| println!("{:?}", err.to_string()))
         .ok();
 
     let mut map = HashMap::new();
-    map.insert("ee",1);
+    map.insert("ee", 1);
 }
 
 #[allow(dead_code)]
-async fn get_asset(){
+async fn get_asset() {
     let client = BtmClient::new("47.103.115.37:9888".to_string(), "http".to_string());
 
     client
         .get_asset("2ade6c7370b3e2e2d9b7be4f5806a0f3d12a79bf8b0d6a171c91026a8fa3a8c2")
         .await
-        .map(|response| println!("{:?}",response))
-        .map_err(|err|println!("{:?}",err.to_string()))
+        .map(|response| println!("{:?}", response))
+        .map_err(|err| println!("{:?}", err.to_string()))
         .ok();
 
     let mut map = HashMap::new();
-    map.insert("ee",1);
+    map.insert("ee", 1);
 }
 
 #[allow(dead_code)]
-async fn list_asset(){
+async fn list_asset() {
     let client = BtmClient::new("47.103.115.37:9888".to_string(), "http".to_string());
 
     client
         .list_assets("")
         .await
-        .map(|response| println!("{:?}",response))
-        .map_err(|err|println!("{:?}",err.to_string()))
+        .map(|response| println!("{:?}", response))
+        .map_err(|err| println!("{:?}", err.to_string()))
         .ok();
 
     let mut map = HashMap::new();
-    map.insert("ee",1);
+    map.insert("ee", 1);
 }
 #[allow(dead_code)]
-async fn update_asset_alas(){
+async fn update_asset_alas() {
     let client = BtmClient::new("47.103.115.37:9888".to_string(), "http".to_string());
 
     client
-        .update_asset_alias("2ade6c7370b3e2e2d9b7be4f5806a0f3d12a79bf8b0d6a171c91026a8fa3a8c2","dongxu")
+        .update_asset_alias(
+            "2ade6c7370b3e2e2d9b7be4f5806a0f3d12a79bf8b0d6a171c91026a8fa3a8c2",
+            "dongxu",
+        )
         .await
-        .map(|response| println!("{:?}",response))
-        .map_err(|err|println!("{:?}",err.to_string()))
+        .map(|response| println!("{:?}", response))
+        .map_err(|err| println!("{:?}", err.to_string()))
         .ok();
 
     let mut map = HashMap::new();
-    map.insert("ee",1);
+    map.insert("ee", 1);
 }
 
 #[allow(dead_code)]
-async fn list_balance(){
+async fn list_balance() {
     let client = BtmClient::new("47.103.115.37:9888".to_string(), "http".to_string());
 
     client
-        .list_balances("17QPQEHJ00A04","alice")
+        .list_balances("17QPQEHJ00A04", "alice")
         .await
-        .map(|response| println!("{:?}",response))
-        .map_err(|err|println!("{:?}",err.to_string()))
+        .map(|response| println!("{:?}", response))
+        .map_err(|err| println!("{:?}", err.to_string()))
         .ok();
 
     let mut map = HashMap::new();
-    map.insert("ee",1);
+    map.insert("ee", 1);
 }
 
 #[allow(dead_code)]
-async fn list_unspent_outputs(){
+async fn list_unspent_outputs() {
     let client = BtmClient::new("47.103.115.37:9888".to_string(), "http".to_string());
-    let param = ListUnspentOutputsRequestParam{
+    let param = ListUnspentOutputsRequestParam {
         account_id: "17QPQEHJ00A04".to_string(),
         account_alias: "alice".to_string(),
         id: "".to_string(),
         unconfirmed: false,
         smart_contract: false,
         from: 0,
-        count: 0
+        count: 0,
     };
     client
         .list_unspent_outputs(&param)
         .await
-        .map(|response| println!("{:?}",response))
-        .map_err(|err|println!("{:?}",err.to_string()))
+        .map(|response| println!("{:?}", response))
+        .map_err(|err| println!("{:?}", err.to_string()))
         .ok();
 
     let mut map = HashMap::new();
-    map.insert("ee",1);
+    map.insert("ee", 1);
 }
 
-
 #[allow(dead_code)]
-async fn backup_wallet(){
+async fn backup_wallet() {
     let client = BtmClient::new("47.103.115.37:9888".to_string(), "http".to_string());
 
     client
         .backup_wallet()
         .await
-        .map(|response| println!("{:?}",response))
-        .map_err(|err|println!("{:?}",err.to_string()))
+        .map(|response| println!("{:?}", response))
+        .map_err(|err| println!("{:?}", err.to_string()))
         .ok();
 
     let mut map = HashMap::new();
-    map.insert("ee",1);
+    map.insert("ee", 1);
 }
