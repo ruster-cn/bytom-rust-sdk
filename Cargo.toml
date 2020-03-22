@@ -1,12 +1,12 @@
 [package]
 name = "bytom-rust-sdk"
 version = "0.1.0"
-authors = ["ruster-cn"]
+authors = ["ruster-cn <tutotu.yang@gmail.com>"]
 edition = "2018"
 license = "Apache-2.0"
 repository = "https://github.com/ruster-cn/bytom-rust-sdk"
-homepage = "https://github.com/ruster-cn/bytom-rust-sdk"
-documentation = "https://github.com/ruster-cn/bytom-rust-sdk"
+homepage = "https://crates.io/crates/bytom-rust-sdk"
+documentation = "https://docs.rs/bytom-rust-sdk"
 description = "Bytom Rust SDK"
 
 

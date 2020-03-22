@@ -909,10 +909,10 @@ impl BtmClient {
         println!("response_byte {}", str::from_utf8(response_byte.bytes())?);
         let result: Response<HashMap<String, u64>> = serde_json::from_slice(response_byte.bytes())?;
         if result.is_success() {
-            match result.data.get("block_count") {
-                Some(count) => return Ok(*count),
-                _ => return Ok(0),
-            }
+            return match result.data.get("block_count") {
+                Some(count) => Ok(*count),
+                _ => Ok(0),
+            };
         } else {
             Err(Error::from(BtmError::new(result)))
         }
@@ -926,10 +926,10 @@ impl BtmClient {
         let result: Response<HashMap<String, String>> =
             serde_json::from_slice(response_byte.bytes())?;
         if result.is_success() {
-            match result.data.get("block_hash") {
-                Some(hash) => return Ok(hash.to_string()),
-                _ => return Ok(String::new()),
-            }
+            return match result.data.get("block_hash") {
+                Some(hash) => Ok(hash.to_string()),
+                _ => Ok(String::new()),
+            };
         } else {
             Err(Error::from(BtmError::new(result)))
         }
@@ -1008,10 +1008,10 @@ impl BtmClient {
         let result: Response<HashMap<String, bool>> =
             serde_json::from_slice(response_byte.bytes())?;
         if result.is_success() {
-            match result.data.get("is_mining") {
-                Some(mining) => return Ok(*mining),
-                _ => return Ok(false),
-            }
+            return match result.data.get("is_mining") {
+                Some(mining) => Ok(*mining),
+                _ => Ok(false),
+            };
         } else {
             Err(Error::from(BtmError::new(result)))
         }
@@ -1030,10 +1030,10 @@ impl BtmClient {
         println!("response_byte {}", str::from_utf8(response_byte.bytes())?);
         let result: Response<HashMap<String, u64>> = serde_json::from_slice(response_byte.bytes())?;
         if result.is_success() {
-            match result.data.get("gas_rate") {
-                Some(rate) => return Ok(*rate),
-                _ => return Ok(0),
-            }
+            return match result.data.get("gas_rate") {
+                Some(rate) => Ok(*rate),
+                _ => Ok(0),
+            };
         } else {
             Err(Error::from(BtmError::new(result)))
         }
