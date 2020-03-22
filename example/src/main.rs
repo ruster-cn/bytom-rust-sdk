@@ -7,7 +7,7 @@ use std::collections::HashMap;
 
 #[tokio::main]
 async fn main() {
-    list_keys().await;
+    create_key().await;
 }
 
 #[allow(dead_code)]

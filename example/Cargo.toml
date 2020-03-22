@@ -1,5 +1,5 @@
 [package]
-name = "cmd"
+name = "bytom-rust-sdk-example"
 version = "0.1.0"
 authors = ["ruster-cn"]
 edition = "2018"

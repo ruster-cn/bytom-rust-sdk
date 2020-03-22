@@ -51,7 +51,6 @@ pub struct ResetPasswordResp {
 #[cfg(test)]
 mod tests {
     use crate::key::Key;
-    use crate::key::XPub;
     #[test]
     fn test_display_key() {
         let test = Key {
